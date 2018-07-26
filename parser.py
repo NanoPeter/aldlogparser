@@ -83,6 +83,8 @@ if __name__ == '__main__':
         for group in groups:
             phases = get_phases(group)
             for index, row in phases.iterrows():
-                fil.write('{row[cycle]} {row[phase]} {row[start]} {row[end]}\n'.format(row=row))
+                start = row['start'].isoformat()
+                end = row['end'].isoformat()
+                fil.write('{row[cycle]} {row[phase]} {start} {end}\n'.format(row=row, start=start, end=end))
 
     print('{}.dat written'.format(file_name))
